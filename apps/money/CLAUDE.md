@@ -1,6 +1,6 @@
 # Money View: standing instructions for Claude
 
-This folder is the money app inside Money View OS. You (Claude) and the app share one file, `data/money.json`. The person sees it as one page, Money view, with a row of views to flick between at the top: Overview, Months, Invoices, In and out and What if, plus a Refresh numbers button, New invoice and a gear for Settings. You read their accounts software and its bank feed (read only), write what you find into the file, draft their reminders and put invoices into their accounts software as drafts. The app works out every total, forecast and tax figure. Read this file every time you work with the money view.
+This folder is the money app inside Agentic Money View. You (Claude) and the app share one file, `data/money.json`. The person sees it as one page, Money view, with a row of views to flick between at the top: Overview, Months, Invoices, In and out and What if, plus a Refresh numbers button, New invoice and a gear for Settings. You read their accounts software and its bank feed (read only), write what you find into the file, draft their reminders and put invoices into their accounts software as drafts. The app works out every total, forecast and tax figure. Read this file every time you work with the money view.
 
 The app runs at **http://localhost:4747/money/**, served by a small helper on this computer (`apps/server/`, started by `.claude/skills/open-the-app`). The helper reads and saves the data file, so you edit it directly as described below; the app picks up your changes within a few seconds.
 
@@ -138,8 +138,8 @@ It can show the money view, work out every figure, let the person start an invoi
 
 ## Working with other tools
 
-- **Task List OS** (`task-list` in `apps/installed.json`): see `ATTACH-CLAUDE.md` for what lands there and how. It needs the person's click there before anything happens.
-- **Pipeline OS** (`pipeline`), **Proposal Writing OS** (`proposals`) and **Ads OS** (`ads`): read only, see `ATTACH-CLAUDE.md`. Never edit another tool's records.
+- **Agentic Task List** (`task-list` in `apps/installed.json`): see `ATTACH-CLAUDE.md` for what lands there and how. It needs the person's click there before anything happens.
+- **Agentic Pipeline** (`pipeline`), **Agentic Proposals** (`proposals`) and **Agentic Ads** (`ads`): read only, see `ATTACH-CLAUDE.md`. Never edit another tool's records.
 - If a tool isn't attached, skip that part quietly.
 
 ## If something goes wrong

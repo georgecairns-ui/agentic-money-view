@@ -1,5 +1,5 @@
 /*
-  MODEL: the rules of Money View OS, as plain functions
+  MODEL: the rules of Agentic Money View, as plain functions
   -----------------------------------------------------
   No screen code in here. Every page, the invoice drawer and the Home boxes ask these
   functions, so every figure means the same thing everywhere. It also runs under Node, which is how

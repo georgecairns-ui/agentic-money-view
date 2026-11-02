@@ -2,25 +2,25 @@
 #
 # MAKE RELEASE
 # ------------
-# Builds dist/money-view-os.zip: a clean copy of the kit for customers to download.
+# Builds dist/agentic-money-view.zip: a clean copy of the kit for customers to download.
 #
-# Run it from the money-view-os folder with:   bash maintainers/make-release.sh
+# Run it from the agentic-money-view folder with:   bash maintainers/make-release.sh
 #
 # What it does:
 #   1. Checks the files that ship are still blank templates, so nobody's real invoices, bank lines,
 #      business notes or setup progress can go out by mistake. Stops if not.
-#   2. Copies the kit into a temporary folder called "Money View OS", leaving out this
+#   2. Copies the kit into a temporary folder called "Agentic Money View", leaving out this
 #      maintainers folder, git history, old builds, backups and computer clutter.
 #   3. Checks the copy is complete and every data and settings file is valid, and syntax-checks the app's scripts.
-#   4. Zips it as dist/money-view-os.zip, replacing any older one.
+#   4. Zips it as dist/agentic-money-view.zip, replacing any older one.
 
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 DIST="$ROOT/dist"
-STAGE="$(mktemp -d "${TMPDIR:-/tmp}/money-view-os-build.XXXXXX")"
+STAGE="$(mktemp -d "${TMPDIR:-/tmp}/agentic-money-view-build.XXXXXX")"
 trap 'rm -rf "$STAGE"' EXIT
-NAME="Money View OS"
+NAME="Agentic Money View"
 OUT="$STAGE/$NAME"
 
 fail() { echo "RELEASE STOPPED: $1" >&2; exit 1; }
@@ -40,7 +40,7 @@ if [ -f "$ROOT/maintainers/test-model.js" ]; then
 fi
 
 # ---------- 1. Is everything that ships still a blank template? ----------
-python3 - "$ROOT" <<'PYEOF' || fail "the files above are not a blank Money View OS kit (real data, or something removed that came back). For real data, restore with: git checkout -- apps/money/data context setup/progress.md CLAUDE.md
+python3 - "$ROOT" <<'PYEOF' || fail "the files above are not a blank Agentic Money View kit (real data, or something removed that came back). For real data, restore with: git checkout -- apps/money/data context setup/progress.md CLAUDE.md
   (and remove any zip in skills-to-upload)"
 import json, os, sys, pathlib, re
 root = pathlib.Path(sys.argv[1])
@@ -111,7 +111,7 @@ for gone in (".claude/skills/import-a-statement", "setup/connections/starling.md
     if (root / gone).exists():
         problems.append(f"{gone} is back: Money View has no statement route")
 
-# Money View OS is its own tool (George, 21 October 2026): parts that only belong to Task List OS or the other tools
+# Agentic Money View is its own tool (George, 21 October 2026): parts that only belong to Agentic Task List or the other tools
 # came out of this kit and must not come back. The originals live in the other toolkit repositories.
 REMOVED = [
     ".claude/skills/file-it", ".claude/skills/open-task-list",
@@ -123,7 +123,7 @@ REMOVED = [
     "notion", "otter", "pipedrive", "read-ai", "slack", "stripe", "tldv", "zoom")]
 for gone in REMOVED:
     if (root / gone).exists():
-        problems.append(f"{gone} is back: it belongs to another tool and was taken out of Money View OS")
+        problems.append(f"{gone} is back: it belongs to another tool and was taken out of Agentic Money View")
 # Only the 6 connection guides this tool uses, plus the README
 KEEP_CONNECTIONS = {"README.md", "xero.md", "xero-drafts.md", "quickbooks.md", "freeagent.md", "sage.md", "bank-feeds.md"}
 for f in sorted((root / "setup/connections").glob("*")):
@@ -147,7 +147,7 @@ for f in ("apps/installed.json", "toolkit.json"):
     d = json.loads((root / f).read_text())
     for t in (d["tools"] if "tools" in d else [d]):
         if t.get("id") == "money" and "media" in t:
-            problems.append(f"{f} has a media setting on the money tool: Money View OS keeps no photos or videos")
+            problems.append(f"{f} has a media setting on the money tool: Agentic Money View keeps no photos or videos")
 for f in sorted((root / "apps").glob("*/data/media/**/*")):
     if f.is_file() and f.name != ".gitkeep":
         problems.append(f"{f.relative_to(root)} is a person's own file and must not ship")
@@ -187,7 +187,7 @@ for f in sorted(root.rglob("*")):
     # The give-up checks apply only to the files that connect apps (elsewhere "move on" or "skip it" is harmless)
     connect_scope = (re.fullmatch(r"setup/0[2-4][^/]*\.md", rel) or re.fullmatch(r"setup/[^/]*(connect|check-ins|make-it-automatic)[^/]*\.md", rel)
                      or re.fullmatch(r"setup/connections/[^/]+\.md", rel) or rel.startswith(".claude/skills/connect-a-tool/")
-                     # Money View OS connects its accounts app and bank feed in its own steps, and offers the regular refresh in step 6
+                     # Agentic Money View connects its accounts app and bank feed in its own steps, and offers the regular refresh in step 6
                      or rel in ("setup/money-01-your-accounts.md", "setup/money-02-your-bank.md", "setup/09-check-and-hand-over.md"))
     if v13_scope and f.suffix == ".md" and rel != "setup/connections/xero-drafts.md":
         give_up = (
@@ -208,8 +208,8 @@ for f in sorted(root.rglob("*")):
     for old in ("open-task-list", "start-task-list"):
         if old in txt:
             problems.append(f"{rel} uses the old name {old} (it is now open-the-app / start-app, the same in every tool)")
-    if re.match(r"setup/scripts/|apps/server/|apps/shared/js/", rel) and re.search(r"Money View OS", txt):
-        problems.append(f"{rel} names this tool (Money View OS): shared parts read the name from toolkit.json")
+    if re.match(r"setup/scripts/|apps/server/|apps/shared/js/", rel) and re.search(r"Agentic Money View", txt):
+        problems.append(f"{rel} names this tool (Agentic Money View): shared parts read the name from toolkit.json")
 for p in problems:
     print("  - " + p, file=sys.stderr)
 sys.exit(1 if problems else 0)
@@ -234,8 +234,8 @@ done
 for f in apps/money/data/money.json apps/money/menu.json apps/money/claude-jobs.json toolkit.json apps/installed.json apps/shared/catalogue.json .claude/settings.json; do
   python3 -c 'import json,sys; json.load(open(sys.argv[1]))' "$OUT/$f" || fail "$f is not valid"
 done
-# A fresh download lists only Money View OS, and no test tool ever ships
-python3 -c 'import json,sys; t=json.load(open(sys.argv[1]))["tools"]; sys.exit(0 if [x["id"] for x in t]==["money"] else 1)' "$OUT/apps/installed.json" || fail "apps/installed.json must list only Money View OS"
+# A fresh download lists only Agentic Money View, and no test tool ever ships
+python3 -c 'import json,sys; t=json.load(open(sys.argv[1]))["tools"]; sys.exit(0 if [x["id"] for x in t]==["money"] else 1)' "$OUT/apps/installed.json" || fail "apps/installed.json must list only Agentic Money View"
 python3 -c 'import json,sys; t=json.load(open(sys.argv[1])); sys.exit(0 if t.get("id")=="money" else 1)' "$OUT/toolkit.json" || fail "toolkit.json must have id money"
 [ ! -e "$OUT/apps/test-tool" ] || fail "the test tool is in the release"
 # The data file must be listed, in both places that track it
@@ -291,7 +291,7 @@ done
 # The old statement route must not be in the copy either, and nothing in files/ may be a CSV, PDF or spreadsheet
 [ ! -e "$OUT/.claude/skills/import-a-statement" ] || fail "the import-a-statement skill is in the release: Money View has no statement route"
 for gone in .claude/skills/file-it .claude/skills/open-task-list context/priorities.md context/routines.md setup/scripts/start-task-list.sh setup/scripts/start-task-list.ps1 setup/connections/gmail-and-google-calendar.md setup/connections/slack.md setup/connections/zoom.md files/01-admin files/08-projects; do
-  [ ! -e "$OUT/$gone" ] || fail "$gone is in the release: it belongs to another tool and was taken out of Money View OS"
+  [ ! -e "$OUT/$gone" ] || fail "$gone is in the release: it belongs to another tool and was taken out of Agentic Money View"
 done
 [ ! -e "$OUT/setup/connections/starling.md" ] || fail "setup/connections/starling.md is in the release: Money View has no direct bank route"
 HITS=$(find "$OUT/files" -type f \( -iname '*.csv' -o -iname '*.pdf' -o -iname '*.xlsx' \))
@@ -326,7 +326,7 @@ HITS=$(found -rIEn '\b[0-9]{2}-[0-9]{2}-[0-9]{2}\b|\b[0-9]{4} ?[0-9]{4} ?[0-9]{4
 [ -z "$HITS" ] || fail "something that looks like a sort code or a card number is in the kit: $(printf '%s\n' "$HITS" | head -3)"
 # The old tool's name must not linger in anything this tool owns. (ATTACHING.md and apps/shared,
 # apps/home and apps/server are shared and may name other tools.) Every path is checked to exist first.
-OLD='content machine|content-machine|content os|megaphone|what-works|apps/content|research-my-market|skill-map|skill map|skillmap|skill and folder map|skill-and-folder|Pipeline OS Licence'
+OLD='content machine|content-machine|content os|megaphone|what-works|apps/content|research-my-market|skill-map|skill map|skillmap|skill and folder map|skill-and-folder|Agentic Pipeline Licence'
 OLD_PATHS=("$OUT/README.md" "$OUT/START-HERE.md" "$OUT/CLAUDE.md" "$OUT/LICENSE" "$OUT/toolkit.json" "$OUT/Open Money View.html" "$OUT/docs" "$OUT"/setup/*.md "$OUT/setup/connections/sage.md" "$OUT/setup/connections/freeagent.md" "$OUT/setup/connections/xero.md" "$OUT/setup/connections/quickbooks.md" "$OUT/setup/connections/xero-drafts.md" "$OUT/setup/connections/bank-feeds.md" "$OUT/skills-to-upload" "$OUT/context" "$OUT/apps/money" "$OUT/apps/installed.json" "$OUT/.claude/settings.json" "$OUT/.claude/skills/README.md")
 for skill in setup update-my-money-view raise-an-invoice put-invoices-in-my-accounts who-owes-me-money whats-coming-in can-i-afford-this set-aside-for-tax sort-money-brain-dump; do
   OLD_PATHS+=("$OUT/.claude/skills/$skill")
@@ -336,18 +336,18 @@ for path in "${OLD_PATHS[@]}"; do
 done
 HITS=$(found -rEiIl "$OLD" "${OLD_PATHS[@]}")
 [ -z "$HITS" ] || fail "an old tool name is still in a file this tool owns: $(printf '%s\n' "$HITS" | head -3)"
-# Task List OS's own start script, skill and helper names must not linger in what this tool owns either. (The attach rules
-# in apps/money/CLAUDE.md, ATTACH-CLAUDE.md and the skills that hand work to Task List OS may name "Task List OS" itself, so
+# Agentic Task List's own start script, skill and helper names must not linger in what this tool owns either. (The attach rules
+# in apps/money/CLAUDE.md, ATTACH-CLAUDE.md and the skills that hand work to Agentic Task List may name "Agentic Task List" itself, so
 # only its script, skill and helper names are checked here. The shared helper's TLOS_ settings stay, as they are shared.
 # setup/scripts/ is shared version 11's own, and save-key.sh keeps the Mac Keychain service and the Linux config folder
-# named task-list-os on purpose in every tool, so a key saved before the rename is still found: left out of this check.)
+# named agentic-task-list on purpose in every tool, so a key saved before the rename is still found: left out of this check.)
 TASK_OLD='start-task-list|open-task-list|task list helper|file-it|your task list'
 TASK_PATHS=("$OUT/README.md" "$OUT/START-HERE.md" "$OUT/CLAUDE.md" "$OUT/toolkit.json" "$OUT/Open Money View.html" "$OUT/docs" "$OUT"/setup/*.md "$OUT/setup/connections" "$OUT/setup/as-installed" "$OUT/context" "$OUT/files" "$OUT/skills-to-upload" "$OUT/apps/money" "$OUT/.claude")
 for path in "${TASK_PATHS[@]}"; do
   [ -e "$path" ] || fail "the task-list-name check expects $path and it isn't there"
 done
 HITS=$(found -rEiIl "$TASK_OLD" "${TASK_PATHS[@]}")
-[ -z "$HITS" ] || fail "a Task List OS script, skill or helper name is still in a file this tool owns: $(printf '%s\n' "$HITS" | head -3)"
+[ -z "$HITS" ] || fail "an Agentic Task List script, skill or helper name is still in a file this tool owns: $(printf '%s\n' "$HITS" | head -3)"
 # Customer-facing words: the README, START-HERE, docs and setup steps never say these
 HITS=$(found -rEinH "\b(delve|game-changer|elevate)\b" "$OUT/README.md" "$OUT/START-HERE.md" "$OUT/docs" "$OUT"/setup/*.md)
 [ -z "$HITS" ] || fail "a banned word is in the README, START-HERE, docs or setup steps: $(printf '%s\n' "$HITS" | head -3)"
@@ -407,6 +407,6 @@ SCREENEOF
 SKILLS=$(find "$OUT/.claude/skills" -name SKILL.md | wc -l | tr -d ' ')
 
 # ---------- 4. Zip (COPYFILE_DISABLE stops macOS adding hidden ._ files) ----------
-rm -f "$DIST/money-view-os.zip"
-(cd "$STAGE" && COPYFILE_DISABLE=1 zip -rqX "$DIST/money-view-os.zip" "$NAME")
-echo "Built dist/money-view-os.zip ($(du -h "$DIST/money-view-os.zip" | cut -f1 | tr -d ' '), $SKILLS skills)"
+rm -f "$DIST/agentic-money-view.zip"
+(cd "$STAGE" && COPYFILE_DISABLE=1 zip -rqX "$DIST/agentic-money-view.zip" "$NAME")
+echo "Built dist/agentic-money-view.zip ($(du -h "$DIST/agentic-money-view.zip" | cut -f1 | tr -d ' '), $SKILLS skills)"

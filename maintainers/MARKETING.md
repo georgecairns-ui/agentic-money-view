@@ -1,4 +1,4 @@
-# Marketing notes: Money View OS
+# Marketing notes: Agentic Money View
 
 ## In one sentence
 

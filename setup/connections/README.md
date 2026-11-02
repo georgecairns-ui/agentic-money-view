@@ -2,7 +2,7 @@
 
 Use `.claude/skills/connect-a-tool/SKILL.md` for the general method (find the route, check or switch on the connection, prove it with a real read, record it, and what to do when there's no connector). This folder has the specifics for each app. Follow the file for the app the person names. Every guide has the same 6 sections, in the same order: Connect, If there's no connector, Prove it, What Claude may and may not do, Record, Sources. (Gmail and Google Calendar always has a connector, so its guide leaves out the second; Microsoft 365's is called "If their email isn't a work account".)
 
-Money View OS works on top of an accounts app and sees the bank only through that app's own bank feed.
+Agentic Money View works on top of an accounts app and sees the bank only through that app's own bank feed.
 
 | App | What it gives Money View | Recommended route | File |
 |---|---|---|---|

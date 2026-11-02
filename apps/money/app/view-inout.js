@@ -2,7 +2,7 @@
   IN AND OUT: what is expected, what regularly goes out, and the tax dates
   ------------------------------------------------------------------------
   Three sections.
-  Money coming in: money that is not on an invoice yet. Suggestions (from Pipeline OS, Proposal OS or Claude)
+  Money coming in: money that is not on an invoice yet. Suggestions (from Agentic Pipeline, Agentic Proposals or Claude)
   sit at the top waiting for Confirm or Drop. Only confirmed items count in the forecast.
   Money going out: regular and one-off payments grouped by category, with the monthly total from the model.
   Suggestions from your accounts app wait for Confirm.
@@ -21,8 +21,8 @@
 
   const CATEGORIES = M.OUT_CATEGORIES.map(function (c) { return [c.key, c.label]; });
   const REPEATS = [["none", "Once"], ["weekly", "Every week"], ["monthly", "Every month"], ["quarterly", "Every 3 months"], ["yearly", "Every year"]];
-  const IN_SOURCES = { you: "you", pipeline: "Pipeline OS", proposals: "Proposal OS", claude: "Claude" };
-  const OUT_SOURCES = { you: "you", ads: "Ads OS", claude: "Claude" };
+  const IN_SOURCES = { you: "you", pipeline: "Agentic Pipeline", proposals: "Agentic Proposals", claude: "Claude" };
+  const OUT_SOURCES = { you: "you", ads: "Agentic Ads", claude: "Claude" };
   const TAX_WEEKS = 52;
   // Only these usually carry VAT you can reclaim. Wages, loans and tax never do, and rent is often exempt, so those start unticked.
   const VAT_KINDS = ["bills", "software", "suppliers", "ads"];

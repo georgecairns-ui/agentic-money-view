@@ -1,6 +1,6 @@
 # Step 2 of 6: your accounts software (required)
 
-Goal: Claude can read the person's accounts software through a live connection, proven with a real read and recorded. **Money View OS works on top of an accounts app, and it can't work without one, so this step is required.** Supported today: **Xero** (fully) and **QuickBooks** (only when the person's Claude shows Intuit's QuickBooks connector, which Intuit says is for US customers only for now; whether it opens to UK customers: to check). FreeAgent, Sage and any other accounts app have no Claude connector, so they are **not supported yet**.
+Goal: Claude can read the person's accounts software through a live connection, proven with a real read and recorded. **Agentic Money View works on top of an accounts app, and it can't work without one, so this step is required.** Supported today: **Xero** (fully) and **QuickBooks** (only when the person's Claude shows Intuit's QuickBooks connector, which Intuit says is for US customers only for now; whether it opens to UK customers: to check). FreeAgent, Sage and any other accounts app have no Claude connector, so they are **not supported yet**.
 
 The tools named in this step are often not loaded yet: search your tools for them first.
 
