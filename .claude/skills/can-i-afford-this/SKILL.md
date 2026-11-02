@@ -1,6 +1,6 @@
 ---
 name: can-i-afford-this
-description: Works out a what if in Money View OS without touching the real figures: builds a scenario (a van at £450 a month, a hire at £2,400 a month from March, losing Greenway Café), switches it on, and explains what the What if view then shows, with a one-paragraph note. The numbers come from the app, never from Claude. Use when the app asks (an Ask Claude question on What if), or when they say "can I afford a van?", "what if I hire someone?", "what if I lose Greenway?", "what happens if I take a month off?" or "can I afford a pay rise?".
+description: Works out a what if in Agentic Money View without touching the real figures: builds a scenario (a van at £450 a month, a hire at £2,400 a month from March, losing Greenway Café), switches it on, and explains what the What if view then shows, with a one-paragraph note. The numbers come from the app, never from Claude. Use when the app asks (an Ask Claude question on What if), or when they say "can I afford a van?", "what if I hire someone?", "what if I lose Greenway?", "what happens if I take a month off?" or "can I afford a pay rise?".
 ---
 
 # Can I afford this

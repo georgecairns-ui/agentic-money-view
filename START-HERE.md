@@ -4,11 +4,11 @@
 
 ---
 
-**Claude, this file is for you.** The person you work for has copied Money View OS onto their computer and wants it set up.
+**Claude, this file is for you.** The person you work for has copied Agentic Money View onto their computer and wants it set up.
 
-**If you've only just copied it for them** (you're running in a different folder, such as their home or Documents folder): setup must run from inside the Money View OS folder, because that's where your skills, permissions and the money view live. Copy it as a plain folder, so it's theirs alone and not linked to the copy online. Use the line for their computer:
-  - Mac: `D="$HOME/Documents/Money View OS"; mkdir -p "$D/setup/as-installed" && curl -fsSL -o "$D/setup/as-installed/money-view-os.tar.gz" https://github.com/georgecairns-ui/money-view-os/archive/refs/heads/main.tar.gz && tar -xzf "$D/setup/as-installed/money-view-os.tar.gz" --strip-components 1 -C "$D"`
-  - Windows (PowerShell): `$d = "$HOME\Documents\Money View OS"; New-Item -ItemType Directory -Force "$d\setup\as-installed" | Out-Null; curl.exe -fsSL -o "$d\setup\as-installed\money-view-os.tar.gz" https://github.com/georgecairns-ui/money-view-os/archive/refs/heads/main.tar.gz; if ($LASTEXITCODE -eq 0) { tar -xzf "$d\setup\as-installed\money-view-os.tar.gz" --strip-components 1 -C "$d" }`
+**If you've only just copied it for them** (you're running in a different folder, such as their home or Documents folder): setup must run from inside the Agentic Money View folder, because that's where your skills, permissions and the money view live. Copy it as a plain folder, so it's theirs alone and not linked to the copy online. Use the line for their computer:
+  - Mac: `D="$HOME/Documents/Agentic Money View"; mkdir -p "$D/setup/as-installed" && curl -fsSL -o "$D/setup/as-installed/agentic-money-view.tar.gz" https://github.com/georgecairns-ui/agentic-money-view/archive/refs/heads/main.tar.gz && tar -xzf "$D/setup/as-installed/agentic-money-view.tar.gz" --strip-components 1 -C "$D"`
+  - Windows (PowerShell): `$d = "$HOME\Documents\Agentic Money View"; New-Item -ItemType Directory -Force "$d\setup\as-installed" | Out-Null; curl.exe -fsSL -o "$d\setup\as-installed\agentic-money-view.tar.gz" https://github.com/georgecairns-ui/agentic-money-view/archive/refs/heads/main.tar.gz; if ($LASTEXITCODE -eq 0) { tar -xzf "$d\setup\as-installed\agentic-money-view.tar.gz" --strip-components 1 -C "$d" }`
 
   If the download fails, check their internet connection and run the line again. Don't try another way in.
 
@@ -16,7 +16,7 @@
 
   If you've already copied it another way (for example with `git clone`, or into a different folder), that's fine: use that folder. Then give them the steps to open it: in the Claude desktop app, open the Code tab, choose that folder, pick "Yes, I trust this folder", then type `/setup`. Stop there; don't start the setup from the wrong folder. Follow this file, then the step files in `setup/`, in order.
 
-## What Money View OS is
+## What Agentic Money View is
 
 A monthly view of the person's money, run by you: what's invoiced and due, what's been paid, what's coming in and going out over the next 12 weeks, and what to put aside for tax. They raise invoices in it, and it works with whatever accounts software they use.
 

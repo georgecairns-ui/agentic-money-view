@@ -1,4 +1,4 @@
-# Testing Money View OS
+# Testing Agentic Money View
 
 How to test the whole thing as a customer would, without touching the repo. Also follow section 5 of `SHARED-V3-CHANGES.md` and the testing sections of `SHARED-V4-CHANGES.md`, `SHARED-V5-CHANGES.md`, `SHARED-V6-CHANGES.md` and `SHARED-V7-CHANGES.md` for the shared parts.
 
@@ -32,7 +32,7 @@ Never test inside the repo: setup writes real details into it. Build the release
 bash maintainers/make-release.sh
 ```
 
-Then unzip `dist/money-view-os.zip` into a test location, for example `Documents/Money View OS test`. Each test run starts from a fresh unzip. Then check the release script itself refuses what it should, on a scratch copy of the repo, by adding each of these and running it (each must stop with a plain message):
+Then unzip `dist/agentic-money-view.zip` into a test location, for example `Documents/Agentic Money View test`. Each test run starts from a fresh unzip. Then check the release script itself refuses what it should, on a scratch copy of the repo, by adding each of these and running it (each must stop with a plain message):
 
 - a non-empty `invoices` (or `transactions`, or `accounts`) list in `apps/money/data/money.json`,
 - a filled-in `context/money.md`,
@@ -43,12 +43,12 @@ Then unzip `dist/money-view-os.zip` into a test location, for example `Documents
 - an `mcp__` permission that creates or sends, and any permission naming Xero, in `.claude/settings.json`,
 - a sort code written as `12-34-56` in any shipped file,
 - any file or skill removed on 21 October 2026 coming back (a connection guide such as `setup/connections/slack.md`, `.claude/skills/file-it`, `.claude/skills/open-task-list`, `context/priorities.md`, `context/routines.md`, `setup/scripts/start-task-list.sh`, a `files/01-admin` folder), or any extra file in `setup/connections/` or extra folder in `.claude/skills/`,
-- the words `start-task-list`, `open-task-list`, `task-list-os`, `file-it` or `your task list` in a file this tool owns,
+- the words `start-task-list`, `open-task-list`, `agentic-task-list`, `file-it` or `your task list` in a file this tool owns,
 - a job in `claude-jobs.json` whose prompt doesn't end "Move no money. Send nothing. Change nothing else.".
 
 ## 3. Page checks
 
-Run the app (`node apps/server/server.js` or `python3 apps/server/server.py`), open http://localhost:4747, go into Money View OS, and check at 375, 768 and 1280 pixels, in light and dark:
+Run the app (`node apps/server/server.js` or `python3 apps/server/server.py`), open http://localhost:4747, go into Agentic Money View, and check at 375, 768 and 1280 pixels, in light and dark:
 
 - **One page**: the sidebar shows one item, "Money view". Under the top bar is the rail: Overview | Months | Invoices | In and out | What if (Invoices shows the overdue count), Refresh numbers, New invoice and the Settings gear. Each view has its own address (`#overview`, `#months`, `#invoices`, `#inout`, `#whatif`, `#invoice/<id>`) and Back and Forward move between them. Nothing scrolls sideways from 320 to 2560 pixels.
 - **Fresh install** (empty data file): every view and the first Home box show "Let's set up your money view" with the `/setup` line and a copy button. Every other empty state says what fills it. Nothing mentions a demo.
@@ -71,7 +71,7 @@ Run the app (`node apps/server/server.js` or `python3 apps/server/server.py`), o
 
 ## 5. The 4 jobs, with a stand-in `claude`
 
-Point `TLOS_CLAUDE` at a stand-in script that follows the job prompts without using real Claude (see Task List OS's own stand-in for the pattern). For each job, trigger it from the app and check:
+Point `TLOS_CLAUDE` at a stand-in script that follows the job prompts without using real Claude (see Agentic Task List's own stand-in for the pattern). For each job, trigger it from the app and check:
 
 - **`refresh-money`**: the stand-in adds accounts, transactions from the feed (no duplicate with the same date, amount and text), invoices with `where: "accounts"`, matched payments, suggested outgoings, flags and one `imports` entry; a draft note made in Money View is linked and closed when an invoice with the same customer and total arrives; it writes no total, forecast or tax figure; `sources.*.checkedAt` is set; `activity` gets a line at the front.
 - **`put-invoices-in-accounts`**: for each invoice with `request.kind: "draft"`, the stand-in sets `ref`, `status: "in-accounts"` and clears `request`. With a stand-in that can't create drafts: the invoice goes back to `draft`, the request clears and a plain flag is written. An invoice without a request is untouched.
@@ -90,7 +90,7 @@ Search the whole kit (`apps/money/`, `.claude/skills/`, `setup/`, `docs/`, `.cla
 
 ## 7. Menu and locked-tool panel
 
-As `SHARED-V3-CHANGES.md` section 5 describes: on a scratch copy, the sidebar shows Home, Money View OS as an open dropdown with its one page (Money view, carrying the overdue count), and the other 6 tools locked under "More tools" in catalogue order. Folding the dropdown shows the total waiting and the choice is remembered. Each locked tool opens the panel with the right tracking on its button link; Escape and a click outside close it; it works by keyboard and at phone width. `showMoreTools: false` in `catalogue.json` hides the locked tools completely. The `money` entry's description reads as in `SHARED-CATALOGUE-RENAME.md`.
+As `SHARED-V3-CHANGES.md` section 5 describes: on a scratch copy, the sidebar shows Home, Agentic Money View as an open dropdown with its one page (Money view, carrying the overdue count), and the other 6 tools locked under "More tools" in catalogue order. Folding the dropdown shows the total waiting and the choice is remembered. Each locked tool opens the panel with the right tracking on its button link; Escape and a click outside close it; it works by keyboard and at phone width. `showMoreTools: false` in `catalogue.json` hides the locked tools completely. The `money` entry's description reads as in `SHARED-CATALOGUE-RENAME.md`.
 
 ## 8. Setup, as the customer's Claude
 
@@ -104,18 +104,18 @@ On a fresh unzip, run `/setup` as if you were the customer's Claude, with a made
 - Step 6 passes every item in `setup/09-check-and-hand-over.md` and marks setup complete only at the very end. It offers the regular refresh at the agreed days and times (a "no" notes "Regular refresh: said no"), pre-approves only the accounts connection's read tools in `.claude/settings.local.json` (never a Xero drafts tool), creates exactly one scheduled task from this session with the shared rule sentence, runs it once and checks its folder and permission mode. The hand-over tells a Xero user to say "put invoices in Xero" for drafts.
 - Nothing in the folder ends up containing a password, a key, a code, a sort code, an account number or a card number.
 
-## 9. Attach to a scratch Task List OS (and the other tools)
+## 9. Attach to a scratch Agentic Task List (and the other tools)
 
-Follow `ATTACHING.md` on a scratch copy of Task List OS, then check:
+Follow `ATTACHING.md` on a scratch copy of Agentic Task List, then check:
 
-- Both tools show as dropdowns in the sidebar; Home offers both tools' boxes (this tool's start off, in the hidden list, per the shared rule); nothing in Task List OS broke; setup didn't ask what the business does a second time.
-- `who-owes-me-money` adds a suggested chase task to Task List OS for each overdue invoice, and `put-invoices-in-my-accounts` "Send INV-0043 from Xero" for each draft in the accounts software, with `source.tool` set to `money`, a `source.id` that matches, `suggested: true` and `addedBy: "claude"`. A "Move £X to your Tax pot" task appears only when `toMove` is over £50. They show on its Review page with a New tag and need a click. Running any twice adds nothing twice. A task for a paid invoice or a sent draft is never added.
-- With Pipeline OS also attached: a deal moved to `won` becomes one suggested `expected` item (`source: "pipeline"`) once, never twice, and no deal record is changed. Likewise Proposal Writing OS (`source: "proposals"`) and Ads OS spend (suggested `outgoings`, `source: "ads"`, `category: "ads"`).
+- Both tools show as dropdowns in the sidebar; Home offers both tools' boxes (this tool's start off, in the hidden list, per the shared rule); nothing in Agentic Task List broke; setup didn't ask what the business does a second time.
+- `who-owes-me-money` adds a suggested chase task to Agentic Task List for each overdue invoice, and `put-invoices-in-my-accounts` "Send INV-0043 from Xero" for each draft in the accounts software, with `source.tool` set to `money`, a `source.id` that matches, `suggested: true` and `addedBy: "claude"`. A "Move £X to your Tax pot" task appears only when `toMove` is over £50. They show on its Review page with a New tag and need a click. Running any twice adds nothing twice. A task for a paid invoice or a sent draft is never added.
+- With Agentic Pipeline also attached: a deal moved to `won` becomes one suggested `expected` item (`source: "pipeline"`) once, never twice, and no deal record is changed. Likewise Agentic Proposals (`source: "proposals"`) and Agentic Ads spend (suggested `outgoings`, `source: "ads"`, `category: "ads"`).
 - With none of those attached: everything above is skipped quietly, with no error.
 
 ## 10. Helper: Node and Python behave the same
 
-Run the app once with `node apps/server/server.js` and once with `python3 apps/server/server.py` and repeat the page checks in section 3 for each: saving the data file, the job endpoints for all 4 jobs, and the backup file (`money.backup.json`) all behave the same in both. Also run `bash setup/scripts/start-app.sh` on the fresh unzip: it prints "Money View OS is running: http://localhost:4747" and does nothing if the helper is already running (`bash -n` on every `.sh` file is the minimum; the `.ps1` files can only be tested on Windows). `autostart-mac.sh install` should create `~/Library/LaunchAgents/com.getaipowers.money-view-os.plist` and `remove` should undo it. `node maintainers/test-helper-media.js` is the shared helper's own check for tools that keep photos or videos; it isn't part of this tool, which has no media, and it isn't part of `make-release.sh`. `node maintainers/test-helper-safety.js` is the shared helper's own check for badly formed requests and saves that must not overwrite a change made in between; it also isn't part of `make-release.sh`.
+Run the app once with `node apps/server/server.js` and once with `python3 apps/server/server.py` and repeat the page checks in section 3 for each: saving the data file, the job endpoints for all 4 jobs, and the backup file (`money.backup.json`) all behave the same in both. Also run `bash setup/scripts/start-app.sh` on the fresh unzip: it prints "Agentic Money View is running: http://localhost:4747" and does nothing if the helper is already running (`bash -n` on every `.sh` file is the minimum; the `.ps1` files can only be tested on Windows). `autostart-mac.sh install` should create `~/Library/LaunchAgents/com.getaipowers.agentic-money-view.plist` and `remove` should undo it. `node maintainers/test-helper-media.js` is the shared helper's own check for tools that keep photos or videos; it isn't part of this tool, which has no media, and it isn't part of `make-release.sh`. `node maintainers/test-helper-safety.js` is the shared helper's own check for badly formed requests and saves that must not overwrite a change made in between; it also isn't part of `make-release.sh`.
 
 ## What can't be tested without real Claude, a real accounts app and a real bank
 

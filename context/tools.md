@@ -2,7 +2,7 @@
 
 Status: not filled in yet
 
-<!-- Claude: fill in "Your setup" during setup step 1 (setup/05-get-to-know-the-business.md). Money View OS connects to the person's accounts software and bank, read only, so "Connected apps" lists those, with what Claude may do in each and never. Never write passwords, keys or codes in this file or anywhere in this folder. -->
+<!-- Claude: fill in "Your setup" during setup step 1 (setup/05-get-to-know-the-business.md). Agentic Money View connects to the person's accounts software and bank, read only, so "Connected apps" lists those, with what Claude may do in each and never. Never write passwords, keys or codes in this file or anywhere in this folder. -->
 
 ## Your setup
 

@@ -10,7 +10,7 @@ Ask once:
 
 For each, add an `expected` item: `who`, `what`, `amount`, `date` (when they expect the money, as they say it), `chance: "likely"` (or `maybe` if they say so), `source: "you"`, `status: "confirmed"` (they've just told you), `invoiceId: null`. Never guess an amount. If they don't know, skip it and say they can add it in In and out later.
 
-If Pipeline OS or Proposal Writing OS is attached, check `apps/money/ATTACH-CLAUDE.md`: won deals and approved proposals come in as suggested items, waiting for their click.
+If Agentic Pipeline or Agentic Proposals is attached, check `apps/money/ATTACH-CLAUDE.md`: won deals and approved proposals come in as suggested items, waiting for their click.
 
 ## 2. Open the app
 

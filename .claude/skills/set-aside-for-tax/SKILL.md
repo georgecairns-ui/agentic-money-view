@@ -1,6 +1,6 @@
 ---
 name: set-aside-for-tax
-description: Explains the tax pot figure in Money View OS (what the app says should be set aside, what's in the pot, and what's left to move), how the app works it out, and reminds the person that they move the money themselves. Logs the move when they say they've done it. Never moves money and never chooses a percentage. Use when they say "how much should I put aside?", "tax pot", "what do I need to move?", "I've moved it", "I moved £640 to my tax pot" or "how's my VAT looking?".
+description: Explains the tax pot figure in Agentic Money View (what the app says should be set aside, what's in the pot, and what's left to move), how the app works it out, and reminds the person that they move the money themselves. Logs the move when they say they've done it. Never moves money and never chooses a percentage. Use when they say "how much should I put aside?", "tax pot", "what do I need to move?", "I've moved it", "I moved £640 to my tax pot" or "how's my VAT looking?".
 ---
 
 # Set aside for tax

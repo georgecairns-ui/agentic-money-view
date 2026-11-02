@@ -1,6 +1,6 @@
 ---
 name: update-my-money-view
-description: Brings Money View OS up to date from the person's accounts app. Reads the connected accounts app (invoices, payments, bills, the business bank feed's transactions, balances) and updates the accounts, the bank lines, the invoices, the payments it can match, the regular bills it spots and any flags worth raising. Never types a total, a forecast or a tax figure. Use when they press Refresh numbers, or say "update my money view", "refresh my numbers", "what's in the bank?", "check my accounts", "has anyone paid me?" or "bring my figures up to date".
+description: Brings Agentic Money View up to date from the person's accounts app. Reads the connected accounts app (invoices, payments, bills, the business bank feed's transactions, balances) and updates the accounts, the bank lines, the invoices, the payments it can match, the regular bills it spots and any flags worth raising. Never types a total, a forecast or a tax figure. Use when they press Refresh numbers, or say "update my money view", "refresh my numbers", "what's in the bank?", "check my accounts", "has anyone paid me?" or "bring my figures up to date".
 ---
 
 # Update my money view
@@ -14,7 +14,7 @@ You bring the person's money view up to date from their accounts app, whenever t
 - Today's date, from the computer. Never guess it.
 - `sources` in the data file: `sources.accounts.mode` (`none`, `read` or `drafts`) and `sources.bank.mode` (`none` or `accounts-feed`) say what is set up.
 - `apps/home/data/connections.json`, if it's there: the accounts connection you proved in setup.
-- Optional, if attached (`apps/installed.json`): Task List OS (`task-list`). See `apps/money/ATTACH-CLAUDE.md`.
+- Optional, if attached (`apps/installed.json`): Agentic Task List (`task-list`). See `apps/money/ATTACH-CLAUDE.md`.
 
 If the accounts mode is `none`, say Money View needs an accounts app connected first and offer `/setup`. If the bank mode is `none`, say so and offer `setup/money-02-your-bank.md`. Don't invent anything.
 

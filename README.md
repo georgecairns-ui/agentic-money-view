@@ -1,12 +1,12 @@
-# Money View OS
+# Agentic Money View
 
 **Your money month by month, and what it looks like for the next 12 weeks.** A free kit from [Get AI Powers](https://getaipowers.com), run by Claude.
 
-Most business owners know roughly what's in the bank and have no idea what it will look like in 6 weeks. Money View OS works on top of your accounts software: Xero today, and QuickBooks where your Claude shows Intuit's QuickBooks connector (Intuit says US only for now). It reads your invoices and your business bank feed, read only, and shows what's invoiced and due, what's been paid and what's still to come in and go out, with a forecast of the next 12 weeks. It works out how much to put aside for tax, and shows you the amount to move to your tax pot.
+Most business owners know roughly what's in the bank and have no idea what it will look like in 6 weeks. Agentic Money View works on top of your accounts software: Xero today, and QuickBooks where your Claude shows Intuit's QuickBooks connector (Intuit says US only for now). It reads your invoices and your business bank feed, read only, and shows what's invoiced and due, what's been paid and what's still to come in and go out, with a forecast of the next 12 weeks. It works out how much to put aside for tax, and shows you the amount to move to your tax pot.
 
-**Claude never moves money, and never sends an invoice.** The app suggests: "Move £640 to your Tax pot", with a button that opens your bank. You make the move, then tell the app you've done it. Invoices go into your accounts software as drafts for you to check and send, or Money View opens your accounts software's new invoice page. Money View OS never sends, pays, approves or deletes anything, and never asks for a bank login, a sort code, an account number or a card number.
+**Claude never moves money, and never sends an invoice.** The app suggests: "Move £640 to your Tax pot", with a button that opens your bank. You make the move, then tell the app you've done it. Invoices go into your accounts software as drafts for you to check and send, or Money View opens your accounts software's new invoice page. Agentic Money View never sends, pays, approves or deletes anything, and never asks for a bank login, a sort code, an account number or a card number.
 
-Money View OS is one of 7 free tools from Get AI Powers, and it works fully on its own. The app's menu shows the others, and Get AI Powers sets them up with you on a free call.
+Agentic Money View is one of 7 free tools from Get AI Powers, and it works fully on its own. The app's menu shows the others, and Get AI Powers sets them up with you on a free call.
 
 Estimates to help you plan, not financial advice. Check big decisions with your accountant.
 
@@ -46,12 +46,12 @@ It's **yours to shape**: your VAT scheme, your tax year, how much makes you nerv
 
 1. **Open the Claude desktop app and choose the Code tab.** Any folder will do for this first step.
 2. **Ask Claude to fetch the kit.** Paste this:
-   > Copy Money View OS from https://github.com/georgecairns-ui/money-view-os into a folder called "Money View OS" in my Documents, using the copy line in its START-HERE.md (not git), then tell me how to open it and set it up.
+   > Copy Agentic Money View from https://github.com/georgecairns-ui/agentic-money-view into a folder called "Agentic Money View" in my Documents, using the copy line in its START-HERE.md (not git), then tell me how to open it and set it up.
 
    Claude copies everything onto your computer and tells you how to open the new folder. In the desktop app, you choose the folder in the Code tab.
 
-   *For Claude, if this README is all you have:* read START-HERE.md on the repository page at https://github.com/georgecairns-ui/money-view-os, then copy the folder with the Mac or Windows line in it.
-3. **In the Code tab, choose the Money View OS folder and pick "Yes, I trust this folder".** The first time, the app asks whether you trust the folder and warns that it pre-approves some permissions. Those permissions only let Claude update your money view and your business notes, and start the app, without stopping to ask each time. It still can't send, pay, move or delete anything.
+   *For Claude, if this README is all you have:* read START-HERE.md on the repository page at https://github.com/georgecairns-ui/agentic-money-view, then copy the folder with the Mac or Windows line in it.
+3. **In the Code tab, choose the Agentic Money View folder and pick "Yes, I trust this folder".** The first time, the app asks whether you trust the folder and warns that it pre-approves some permissions. Those permissions only let Claude update your money view and your business notes, and start the app, without stopping to ask each time. It still can't send, pay, move or delete anything.
 4. **Type `/setup`.**
 
 Then it opens your money view and gives you its link, **http://localhost:4747/money/**. Bookmark it.
@@ -71,11 +71,11 @@ Then it opens your money view and gives you its link, **http://localhost:4747/mo
 
 ## Your information
 
-Your money view lives in this folder on your computer, in one file. Your notes about the business are in `context/`. Claude reads your accounts software and its bank feed through your own Claude account, read only. Your accounts software is connected through Claude's Connectors: you sign in on its own page, never in the chat or in this folder, and setup never asks for a key. There's no Money View OS account or server; Get AI Powers can't see any of it. Read [docs/PRIVACY-AND-SAFETY.md](docs/PRIVACY-AND-SAFETY.md) for the detail.
+Your money view lives in this folder on your computer, in one file. Your notes about the business are in `context/`. Claude reads your accounts software and its bank feed through your own Claude account, read only. Your accounts software is connected through Claude's Connectors: you sign in on its own page, never in the chat or in this folder, and setup never asks for a key. There's no Agentic Money View account or server; Get AI Powers can't see any of it. Read [docs/PRIVACY-AND-SAFETY.md](docs/PRIVACY-AND-SAFETY.md) for the detail.
 
 ## Want it set up properly for you?
 
-Money View OS works on its own. If you'd like help turning it into a weekly habit for your whole team, Get AI Powers can help. Find us at [getaipowers.com](https://getaipowers.com).
+Agentic Money View works on its own. If you'd like help turning it into a weekly habit for your whole team, Get AI Powers can help. Find us at [getaipowers.com](https://getaipowers.com).
 
 ## What's inside
 
@@ -91,7 +91,7 @@ context/               Claude's notes about your business and its money
 files/                 your finance papers and an archive folder
 apps/                  the app and its look (theme.css); apps/money/data/money.json is your money view
 docs/                  privacy and safety
-maintainers/           for people developing Money View OS itself
+maintainers/           for people developing Agentic Money View itself
 ```
 
 ## Licence

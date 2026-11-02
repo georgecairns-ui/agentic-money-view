@@ -4,7 +4,7 @@ Plain answers to the questions people ask before connecting their accounts and b
 
 ## Where is my information kept?
 
-In this folder on your computer. Money View OS has no account, no server and no database. Your money view (your invoices, payments, bank lines, regular bills and settings) is one file, `apps/money/data/money.json`. Claude's notes about your business are in `context/`. You can open, read and edit all of it yourself.
+In this folder on your computer. Agentic Money View has no account, no server and no database. Your money view (your invoices, payments, bank lines, regular bills and settings) is one file, `apps/money/data/money.json`. Claude's notes about your business are in `context/`. You can open, read and edit all of it yourself.
 
 If this folder sits inside Google Drive, OneDrive or Dropbox, it's backed up there like any other folder. If that folder is shared with other people, they can read your money view and notes too, so keep it in a private part of your drive.
 
@@ -50,7 +50,7 @@ It's told never to invent an invoice, a payment, a customer or an amount. If it 
 
 ## What is the helper?
 
-Your app runs from a small program in your Money View OS folder, so it opens like a web page at http://localhost:4747. It only listens on your own computer: nothing on the internet or your network can reach it. It only shows the app and only ever saves your money view file, keeping a backup before every save. When you press Refresh numbers, Chase, Put it in Xero as a draft or Ask Claude in the app, it can start Claude Code on your computer to do that one job, and only when the app itself asks.
+Your app runs from a small program in your Agentic Money View folder, so it opens like a web page at http://localhost:4747. It only listens on your own computer: nothing on the internet or your network can reach it. It only shows the app and only ever saves your money view file, keeping a backup before every save. When you press Refresh numbers, Chase, Put it in Xero as a draft or Ask Claude in the app, it can start Claude Code on your computer to do that one job, and only when the app itself asks.
 
 ## Does it send anything anywhere?
 
@@ -58,7 +58,7 @@ No. It doesn't send emails, messages or invoices. Your money view is saved in fi
 
 ## Who sees my information?
 
-You, and Claude while you're working with it. Your conversations with Claude are covered by your Claude account's privacy settings, which you can check in the Claude app. If you connect your accounts software or bank, what Claude reads goes through your own Claude account, in the usual way. Get AI Powers, who made Money View OS, can't see your folder or your money view.
+You, and Claude while you're working with it. Your conversations with Claude are covered by your Claude account's privacy settings, which you can check in the Claude app. If you connect your accounts software or bank, what Claude reads goes through your own Claude account, in the usual way. Get AI Powers, who made Agentic Money View, can't see your folder or your money view.
 
 ## Late payment and the law
 

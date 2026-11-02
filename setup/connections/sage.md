@@ -1,6 +1,6 @@
 # Connect Sage
 
-What it gives Money View: nothing yet. Money View OS can't connect to Sage yet, because there is no Claude connection for Sage that we can verify, and Money View builds the money view only through a live connection to the accounts app, never from exports, spreadsheets or reports saved into a folder.
+What it gives Money View: nothing yet. Agentic Money View can't connect to Sage yet, because there is no Claude connection for Sage that we can verify, and Money View builds the money view only through a live connection to the accounts app, never from exports, spreadsheets or reports saved into a folder.
 
 **Connector:** none. Claude's connector directory has no Sage connector (searched 29 October 2026). **Plans:** not applicable.
 **Route:** none for Money View; Claude can read an export in chat when asked.

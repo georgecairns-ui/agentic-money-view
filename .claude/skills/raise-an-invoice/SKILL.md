@@ -1,6 +1,6 @@
 ---
 name: raise-an-invoice
-description: Writes a draft invoice in Money View OS with the right VAT and the person's payment terms, asks for anything missing (one question at a time), then puts it into their accounts app as a draft through the drafts connection, or, when the connection only reads, opens the accounts app's new invoice page so they raise it there. Never works out a total, never sends it. Use when they say "invoice Greenway Café for the menu, £850", "raise an invoice", "make an invoice for Marlow Dental", "bill them for the website" or "I need to invoice someone".
+description: Writes a draft invoice in Agentic Money View with the right VAT and the person's payment terms, asks for anything missing (one question at a time), then puts it into their accounts app as a draft through the drafts connection, or, when the connection only reads, opens the accounts app's new invoice page so they raise it there. Never works out a total, never sends it. Use when they say "invoice Greenway Café for the menu, £850", "raise an invoice", "make an invoice for Marlow Dental", "bill them for the website" or "I need to invoice someone".
 ---
 
 # Raise an invoice

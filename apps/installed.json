@@ -2,7 +2,7 @@
   "tools": [
     {
       "id": "money",
-      "name": "Money View OS",
+      "name": "Agentic Money View",
       "app": "apps/money/",
       "dataFiles": [
         "apps/money/data/money.json"

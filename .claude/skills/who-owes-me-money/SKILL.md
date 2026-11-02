@@ -1,6 +1,6 @@
 ---
 name: who-owes-me-money
-description: Lists who owes the person money in Money View OS, which invoices are overdue and by how many days, and drafts a polite reminder for each overdue invoice using the polite-chaser skill, saved in the invoice for them to copy. When Task List OS is attached, adds a chase task for each, waiting for a click. Never sends anything. Use when the app asks (Chase on an invoice), or when they say "who owes me money?", "chase my invoices", "who hasn't paid?", "what's overdue?" or "nudge Greenway about the invoice".
+description: Lists who owes the person money in Agentic Money View, which invoices are overdue and by how many days, and drafts a polite reminder for each overdue invoice using the polite-chaser skill, saved in the invoice for them to copy. When Agentic Task List is attached, adds a chase task for each, waiting for a click. Never sends anything. Use when the app asks (Chase on an invoice), or when they say "who owes me money?", "chase my invoices", "who hasn't paid?", "what's overdue?" or "nudge Greenway about the invoice".
 ---
 
 # Who owes me money
