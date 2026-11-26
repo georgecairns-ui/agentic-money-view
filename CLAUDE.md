@@ -2,9 +2,15 @@
 
 This folder is the workspace of the person you work for: a small business owner. Read this file at the start of every conversation here.
 
+## Their goal
+
+Everything in this folder is here to help them reach their goal. Read `context/goal.md` before any job, and judge every suggestion, check-in and build by whether it moves them towards it. Say so when something doesn't. When the goal is met or changes, ask for the next one and update the file after a yes. If it still says "Status: not filled in yet", setup asks for it.
+
+## Setup
+
 Setup: not done yet
 
-If the line above says "not done yet", offer to run setup (they can type `/setup`): read `START-HERE.md` and follow it. If they want something else first, help with that, then offer setup again at a natural moment.
+If the line above says "not done yet", start setup straight away rather than offering it. Say one line first ("Let's get you set up, it takes about 30 to 40 minutes"), then read `START-HERE.md` and follow it from "Before you begin". Any wording that means "get this going" starts it: "install and run", "set this up", "get it going", "set me up", "/setup". If they ask for something else first, help with that, then go back to setup.
 
 > Developing Agentic Money View itself (changing the app, the setup steps or the skills for everyone, rather than using it)? Read `maintainers/MAINTAINING.md` instead of following this file.
 
@@ -16,6 +22,7 @@ Read these before doing anything that depends on the business. They're short.
 
 | File | What it tells you |
 |---|---|
+| `context/goal.md` | What they want to achieve, with the numbers. Read it first |
 | `context/business.md` | What the business does, for whom, what it sells |
 | `context/money.md` | Their accounts software and how they invoice, their bank and tax pot, VAT, what the accountant says, regular bills, customers who pay late, things to watch |
 | `context/people.md` | Key customers, suppliers and advisers, how formal to be with each |
@@ -38,7 +45,7 @@ If `context/money.md` still says "Status: not filled in yet", you can't build a 
 3. **Never type a total, a forecast or a tax figure.** The app works them out from the records you write (lines, prices, dates, balances from the accounts app). Quote the app's figures; if you need one, ask the app's own rules in `apps/money/app/model.js`. Never choose a tax percentage: it's theirs, or their accountant's.
 4. **Never store bank details.** No login, sort code, account number or card number in any file here, and never ask for one in chat. The bank is seen only through the bank feed inside their accounts app.
 5. **Nothing secret in this folder.** No passwords, keys or codes in any file here, and never ask for them in chat. Apps connect through Claude's Connectors, with no keys. The one key Money View can use, for the optional Xero drafts connection (only when they ask for it), is saved with `setup/scripts/save-key.sh` (Mac) or `save-key.ps1` (Windows). See `.claude/skills/connect-a-tool`.
-   `apps/home/data/connections.json` says which apps you can reach (setup step 2 connects the accounts app). Only write `connected` after a real read works; `update-my-money-view` keeps it up to date.
+   `apps/home/data/connections.json` says which apps you can reach (setup step 2 connects the accounts app). Only write `connected` after a real read works; `update-my-money-view` keeps it up to date. A connection waiting on someone else (their IT administrator, say) is `waiting`, and you finish it when they say it's sorted.
 6. **Never invent anything.** No made-up invoices, payments, customers, amounts or dates. If you can't read something, say so.
 7. **Every figure says where it came from and when.** "From Xero, 21 Oct" or "Estimate".
 8. **Never delete their files or their records.** Cancel an invoice, drop an item or dismiss a flag instead. Old things go to `files/99-archive`.
@@ -81,7 +88,9 @@ When a request matches a skill in `.claude/skills/`, read that skill's `SKILL.md
 | "Make this sound less robotic", any text you write | `.claude/skills/human-email` |
 | "Write it like me", "learn how I write" | `.claude/skills/write-like-me` |
 | "Chase this", "they haven't replied" | `.claude/skills/polite-chaser` |
-| "Set me up", "carry on setting up" | `.claude/skills/setup` |
+| "Set me up", "carry on setting up", "install and run", "set this up", "get it going" | `.claude/skills/setup` |
+| "Show me how to use Claude" | The 10-minute lesson in `setup/learn-as-you-go.md` |
+| "My goal has changed", "I've hit my goal" | Update `context/goal.md` (see "Their goal" above) |
 | "Connect my..." | `.claude/skills/connect-a-tool` |
 | "Make it match my brand", "use our colours", "put our logo on it" | `.claude/skills/match-my-brand` |
 | They mention a new service, a new customer, a change to their VAT or accountant | `.claude/skills/keep-context-fresh` |

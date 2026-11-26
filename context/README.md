@@ -6,6 +6,7 @@ They're plain text. You can open and edit any of them yourself. If something's w
 
 | File | What's in it |
 |---|---|
+| `goal.md` | What you want to achieve, with the numbers. Everything else is judged by it |
 | `business.md` | What the business does, for whom, and what it sells |
 | `money.md` | Your accounts software and how you invoice, your bank and tax pot, VAT, what your accountant says, regular bills, customers who pay late and things to watch |
 | `people.md` | Your key customers and how formal to be with each, plus suppliers and advisers |

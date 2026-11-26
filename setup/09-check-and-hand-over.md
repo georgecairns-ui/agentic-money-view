@@ -17,6 +17,8 @@ Check these yourself. Fix anything that fails, then check again.
 - [ ] Nothing secret (a password, a key, a sort code, an account number or a card number) is anywhere in this folder, and nothing was sent, paid, moved or changed in their accounts or bank.
 - [ ] Their accounts app has a row in `apps/home/data/connections.json` that says `connected`, with a `checked` date from this setup. Do one small read now (their unpaid invoices) to check it still works. If it fails, follow `.claude/skills/connect-a-tool` until it reads again.
 - [ ] Home shows the Connections box with their accounts app as Connected.
+- [ ] Anything else they connected is `connected`, `export-only`, `no-connector`, `waiting` or `needs-attention` in `apps/home/data/connections.json`. Anything `waiting` has `waitingOn` and the one thing still to do in `note`.
+- [ ] Every `context/` file says "Status: filled in", or `setup/progress.md` says why not. `context/goal.md` has their goal with the numbers.
 
 ## 2. A regular refresh (their choice)
 
@@ -64,7 +66,7 @@ Check that `list_scheduled_tasks` shows exactly one refresh task for this folder
 
 ## 3. Hand over
 
-Give them a plain summary with real figures from the Overview, never an example. For instance:
+Start with their goal, in one line: what they want to achieve (from `context/goal.md`) and that everything here is set up to help with it. Then give them a plain summary with real figures from the Overview, never an example. For instance:
 
 > Here's where you are. You use Xero, read by Claude, and your business current account is read from your Xero bank feed. As at 21 October you've got £6,420 in the bank, £2,150 is owed to you (£850 of it overdue), and your tightest week in the next 12 is the week of 17 November at £2,140, after your VAT return. The app says £640 is left to move to your tax pot. I've confirmed 9 regular payments with you.
 
@@ -79,6 +81,11 @@ Say those figures only as the app shows them. Then tell them, briefly:
 - **Their connection**, in one line: which accounts app you connected, and that its bank feed is read through it.
 - **The regular refresh**, if they chose it: the days and times it runs.
 - **Xero only**, in these words: "If you'd ever like me to put invoices into Xero as drafts for you, say 'put invoices in Xero'."
+- **Anything still waiting.** List every `waiting` connection with the one thing to do next: "Your CRM is waiting on your Claude Owner to add it. When they have, press Finish connecting on Home, or tell me, and I'll check it then."
+- **Files you said you'd share.** List any still `to find` in `setup/progress.md`, by name.
+- **Joining up the rest.** If anything is `no-connector` or `export-only`, say once: "Want these joined up with something you already use? Book a call with Joey or George," with the booking link from `apps/shared/catalogue.json`. The Connections box on Home has the same link next to each one.
+
+Then offer the 10-minute "how to use Claude day to day" lesson from `setup/learn-as-you-go.md`, in every guide mode. If they say no, tell them they can say "show me how to use Claude" any time.
 
 ## 4. Mark setup complete
 

@@ -12,12 +12,13 @@ description: Notices new facts that come up in conversation, such as a new custo
 
 ## What you need
 
-- The relevant file under `context/`: `business.md`, `money.md`, `people.md` or `voice.md`.
+- The relevant file under `context/`: `goal.md`, `business.md`, `money.md`, `people.md` or `voice.md`.
 
 ## Steps
 
 1. Spot the new fact as it comes up naturally. Do not interrupt the flow of conversation to go hunting for these; just notice them.
 2. Work out which file it belongs in:
+   - Their main goal, or progress towards it, or a goal met or changed: `goal.md`. When it's met or changed, ask what the next one is.
    - A customer, supplier or adviser, and how formal to be with them: `people.md`.
    - What the business does, its offer, its customers: `business.md`.
    - Their accounts software, bank, VAT, tax, regular bills, customers who pay late: `money.md`.
