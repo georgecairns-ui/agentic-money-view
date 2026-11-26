@@ -1,6 +1,6 @@
 # Step 3 of 6: your bank
 
-Goal: Claude can see recent transactions in the business bank account, read only, through the bank feed inside their accounts app. Claude never gets a login, a card number, a sort code or an account number, and it can't move money. **This is the only way Money View sees the bank, and the bank feed is required: don't carry on without it.**
+Goal: Claude can see recent transactions in the business bank account, read only, through the bank feed inside their accounts app. Claude never gets a login, a card number, a sort code or an account number, and it can't move money. **This is the only way Money View sees the bank, and the bank feed is required: don't carry on without it.** The one exception: when the accounts app itself is `waiting` (step 2, part 6), the feed can't be checked yet. Ask questions 1, 4 and 5, save what they say, then say in one line: "I'll check your bank feed as soon as your accounts app is connected." Tick this step with the note "bank feed to check once the accounts app is connected" and go on to step 4 of setup.
 
 ## 1. Ask, one question at a time
 

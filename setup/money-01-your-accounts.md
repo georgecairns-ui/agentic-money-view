@@ -15,7 +15,7 @@ Say these plainly, once, when they matter. Don't promise more.
 
 ## 1. Which accounts software
 
-Ask: **"Which accounts software do you use?"** Xero, QuickBooks, something else, or none. Don't suggest one yet. Check `context/tools.md` and `apps/home/data/connections.json` too: if their accounts app is already recorded there, say so and check it in part 2 rather than starting again.
+If `setup/first-questions.md` already told you (what they already use), say what you found rather than asking again. Otherwise ask: **"Which accounts software do you use?"** Xero, QuickBooks, something else, or none. Don't suggest one yet. Check `context/tools.md` and `apps/home/data/connections.json` too: if their accounts app is already recorded there, say so and check it in part 2 rather than starting again.
 
 ## 2. Connect it and prove it
 
@@ -38,6 +38,8 @@ Then look at the tools the connection offers and set `sources.accounts.mode`: `d
 
   > Money View itself needs a live connection to your accounts app to build your money view, so it can't work from your accounts app yet. It works with Xero today, and QuickBooks will work once Intuit's Claude connection reaches the UK. Once your accounts app is one of those, come back and type /setup and we'll pick up from here.
 
+  Then give the one-line book-a-call offer from `.claude/skills/connect-a-tool` (part 4), once, with what the app does for them in the row's `note`.
+
   Leave this step unticked, put "Waiting for a supported accounts app" in `setup/progress.md` and stop. Setup doesn't go on to the bank or the rest without a live connection.
 
 - **None** (Word, Excel, a notebook): stop politely, in one plain paragraph:
@@ -57,13 +59,23 @@ For QuickBooks, in context/tools.md and the note, write the never-list as: 'Send
 
 If Xero or Intuit's QuickBooks connector is there but still won't connect after the loop in `connect-a-tool`, say what went wrong in one plain line and record the row as `needs-attention`, with what went wrong in `note`. The Connections box on Home shows a **Fix it** button for it. Money View can't build anything without this connection, so leave this step unticked, put "Accounts connection needs attention" in `setup/progress.md`, tell them they can press **Fix it** on Home or type /setup to try again, and stop here. Never ask for a password or a key in chat.
 
-## 6. Payment terms
+## 6. If it's waiting on someone else
+
+If the connector needs their Claude Owner to add it, or their IT administrator to approve it (on a Team or Enterprise plan, `setup/connections/where-to-click.md`), park it (`.claude/skills/connect-a-tool`, "Waiting on someone else"): offer to draft the short message they can send, record the row as `waiting` with `waitingOn` (who, such as "IT") and the one thing still to do in `note`, and add "Accounts connection waiting on <who>" to "Notes for next time" in `setup/progress.md`. Leave `sources.accounts.mode` as `none`. Say plainly, in one line: "Your money view fills in once your accounts app is connected. When it is, press Finish connecting on Home, or tell me." Ask about payment terms (part 7), tick this step with the note "accounts app waiting on <who>", and go on to step 3 (`setup/money-02-your-bank.md`).
+
+When it's finished later (Finish connecting, or they tell you), `connect-a-tool` part 2a proves it with a read and then does what setup would have done with it. For the accounts app that is: part 8 of this step (`sources.accounts`, the invoice prefix), the bank feed check in `setup/money-02-your-bank.md` (questions 2 and 3), then `.claude/skills/update-my-money-view` and confirming the regular payments it suggests (`setup/money-03-money-out.md`, parts 1 and 2), so the money view fills in.
+
+## 7. Payment terms
 
 Once the connection is proven, ask: **"How many days do you usually give people to pay?"** Save as `settings.invoice.termsDays` (30 if they don't know). Mention that the invoice numbers come from their accounts software, so you don't ask about those.
 
-## 7. Save as you go
+## 8. Save as you go
 
 - `apps/money/data/money.json`: `sources.accounts` (`app`, `mode`, `checkedAt` now), `settings.invoice.termsDays` and `settings.invoice.prefix` (from their latest invoice number, as a default only).
 - `context/money.md`: under "Accounts app and how we invoice", what they use, how invoices are sent, and the terms, in their words. Change its status line to `Status: filled in on <date>`.
+
+## 9. What else they already use
+
+For anything else they said they already use for this side of the business (`setup/first-questions.md`: a cash flow spreadsheet, their own dashboards, a CRM), follow `.claude/skills/connect-a-tool`. It doesn't feed the money view, so say so in one line. One with a connector is connected and proven only if they'd like it. One with no connector gets the shared no-connector sentence from part 3 (only the sentence: part 3's stop is for the accounts app), is recorded as `export-only` with what it does for them in `note`, and gets the one-line book-a-call offer from `.claude/skills/connect-a-tool` (part 4), once. One waiting on someone else is parked as `waiting`.
 
 Tick this step in `setup/progress.md`.

@@ -1,6 +1,6 @@
 # Start here
 
-> **If you're a person reading this:** you don't need to do anything in this file. Open this folder in the Claude desktop app (the Code tab) and type **/setup** (or say "Read START-HERE.md and set me up"). Claude connects your accounts software (Xero today, QuickBooks where Claude shows Intuit's connector) and proves it can read it, helps you switch on your business bank feed inside it, and asks a few things about your regular payments, VAT and tax, one question at a time. Most people are done in 30 to 40 minutes. The first time you open the folder, the app asks whether you trust it: choose **Yes, I trust this folder**. That lets Claude read your accounts and update your money view without asking every time. It still can't send, pay, move or delete anything.
+> **If you're a person reading this:** you don't need to do anything in this file. Open this folder in the Claude desktop app (the Code tab) and type anything, even "hello". Setup starts from there. (Or type **/setup**.) Claude connects your accounts software (Xero today, QuickBooks where Claude shows Intuit's connector) and proves it can read it, helps you switch on your business bank feed inside it, and asks a few things about your regular payments, VAT and tax, one question at a time. Most people are done in 30 to 40 minutes. The first time you open the folder, the app asks whether you trust it: choose **Yes, I trust this folder**. That lets Claude read your accounts and update your money view without asking every time. It still can't send, pay, move or delete anything.
 
 ---
 
@@ -48,11 +48,13 @@ This folder is their workspace from now on: `context/` holds what you know about
 
    | Guide mode | How you guide |
    |---|---|
-   | beginner | One step per message. Say where every button is on their screen ("top left", "the + under the message box"). Plain words only: "connection", never MCP, API, JSON or repo. Check each thing worked before the next, and say what you just did |
+   | beginner | One step per message. Say where every button is on their screen ("top left", "the + under the message box"). Plain words only: "connection", never MCP, API, JSON or repo. Check each thing worked before the next, and say what you just did. End each step with one "You just learned" line from `setup/learn-as-you-go.md` |
    | some | 2 or 3 steps per message, and a check after each connection |
    | confident | Batch it, the accounts app first, then the bank feed: "Connect your accounts software in Connectors, and tell me when it's done", then check it and its bank feed at once |
 
-   The guide mode changes the pace and how much you explain. It never changes the rules: every connection is proven with a real read, and the accounts app comes before any other connection.
+   The guide mode changes the pace and how much you explain. It never changes the rules: every connection is proven with a real read, and you connect the accounts app before any other connection.
+
+   Straight after the guide mode question (or, if it was already answered, in your first message), say this line: "Tell me anything as we go, even small stuff, the way you'd tell a colleague. 'My IT team has to approve that' or 'I use 2 emails' is exactly what I need."
 3. Read `setup/progress.md`. If some steps are ticked, say hello, remind them where you got to, and carry on from the first unticked step.
 4. Read `CLAUDE.md` in this folder: the standing rules.
 5. If setup is already complete, don't run it again. Ask what they'd like to do.
@@ -61,8 +63,8 @@ This folder is their workspace from now on: `context/` holds what you know about
 
 | Step | File | What happens | Their time |
 |---|---|---|---|
-| 1 | `setup/05-get-to-know-the-business.md` | A short chat about the business, filling `context/business.md`, then matching the app to their brand | 5 min |
-| 2 | `setup/money-01-your-accounts.md` | Their accounts software, connected through Claude's Connectors (no keys) and proven with a real read (setup stops politely without a supported one) | 7 min |
+| 1 | `setup/05-get-to-know-the-business.md` | `setup/first-questions.md` first (their plan, files, what they already use, their goal, then you look for the rest yourself and show them what you found), then a short chat about anything still missing, filling `context/business.md`, then matching the app to their brand | 8 min |
+| 2 | `setup/money-01-your-accounts.md` | Their accounts software, connected through Claude's Connectors (no keys) and proven with a real read (setup stops politely without a supported one; one waiting on their IT team or Claude Owner is parked, and setup goes on) | 7 min |
 | 3 | `setup/money-02-your-bank.md` | Their bank: switching on the business bank feed in their accounts software (required), checking Claude can see it, and their tax pot | 5 min |
 | 4 | `setup/money-03-money-out.md` | Bringing the numbers up to date, confirming regular payments, VAT, tax and the balance that makes them nervous | 5 min |
 | 5 | `setup/money-04-first-view.md` | Anything coming in that isn't invoiced, a tour of the Overview, and raising an invoice | 3 min |
@@ -72,7 +74,9 @@ Start by telling them what's about to happen, in a few short lines: you'll ask a
 
 Do as much as you can yourself, ask as little as possible, one question at a time, and save each answer as you go. Keep a running count of what you've done (invoices read, bank lines added, regular payments confirmed) for the hand-over.
 
-After each step: tick it in `setup/progress.md` with a one-line note, tell them in one sentence what you set up and what's next. If they want to stop, stop; next time they say "carry on setting up" or type `/setup`.
+After each step: tick it in `setup/progress.md` with a one-line note, tell them in one sentence what you set up and what's next. In beginner mode, add the "You just learned" line for that step (`setup/learn-as-you-go.md`). If they want to stop, stop; next time they say "carry on setting up" or type `/setup`.
+
+Whenever they hesitate, skip a question, say "I don't know" or hit a blocker, invite them to tell you more, in one line that fits the moment: "What's getting in the way? Tell me like you'd tell me over a coffee."
 
 ## Ground rules for the whole setup
 
@@ -84,6 +88,8 @@ These don't bend, whatever is asked later.
 - **No bank details anywhere.** Never ask for or store a bank login, a sort code, an account number or a card number, in chat or in any file. They sign in to their own bank on its own page when they switch the feed on.
 - **No passwords or keys in chat or in this folder.** People sign in on each app's own screen, through Claude's Connectors. Setup never uses keys. (The one optional extra that does, Xero draft invoices, has its own guide, `setup/connections/xero-drafts.md`. It is only offered when they ask for it, never in setup.)
 - **Never invent anything.** No made-up invoices, payments, customers, amounts or dates. If you can't read something, say so.
+- **Waiting on someone else doesn't stop setup.** When a connection needs their IT administrator, their Claude Owner or a password reset, park it as `waiting` (`.claude/skills/connect-a-tool`, "Waiting on someone else"), connect what they can now, and go on to the next step.
+- **Keep track of what they promise to share.** Every file they say they'll share goes under "Files you said you'd share" in `setup/progress.md`. Look for it yourself first, and repeat the list back before each new step (`setup/first-questions.md`, section 4).
 - **Be honest about what you can reach.** Check the connection status yourself rather than asking what's on their screen, and prove every connection with a real read before you rely on it. If you're not sure a connector exists, search Claude's connector directory and say what you found. A bank feed is as fresh as the accounts app's last import. Say how fresh, rather than let them think it's live.
 - **Never delete their files or their records.** Cancel, drop or dismiss instead. Old things go to `files/99-archive`, and only for the files in this toolkit.
 

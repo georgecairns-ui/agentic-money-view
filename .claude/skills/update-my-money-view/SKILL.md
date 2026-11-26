@@ -11,12 +11,13 @@ You bring the person's money view up to date from their accounts app, whenever t
 
 - `apps/money/data/money.json` and `apps/money/CLAUDE.md` (the format and the rules).
 - `context/money.md`, `context/business.md` and `context/tools.md`: how they invoice, which bank, VAT, what the accountant says.
+- `context/goal.md`: their goal, so you can say how this run moves them towards it.
 - Today's date, from the computer. Never guess it.
 - `sources` in the data file: `sources.accounts.mode` (`none`, `read` or `drafts`) and `sources.bank.mode` (`none` or `accounts-feed`) say what is set up.
 - `apps/home/data/connections.json`, if it's there: the accounts connection you proved in setup.
 - Optional, if attached (`apps/installed.json`): Agentic Task List (`task-list`). See `apps/money/ATTACH-CLAUDE.md`.
 
-If the accounts mode is `none`, say Money View needs an accounts app connected first and offer `/setup`. If the bank mode is `none`, say so and offer `setup/money-02-your-bank.md`. Don't invent anything.
+If the accounts mode is `none`, say Money View needs an accounts app connected first and offer `/setup`. If its row in `apps/home/data/connections.json` is `waiting`, say instead, in one line, that the money view fills in once it's connected: they press **Finish connecting** on Home, or tell you (`.claude/skills/connect-a-tool`, "Waiting on someone else"). Once that's done, this skill is what fills the money view in. If the bank mode is `none`, say so and offer `setup/money-02-your-bank.md`. Don't invent anything.
 
 ## Steps
 
@@ -38,11 +39,13 @@ If the accounts mode is `none`, say Money View needs an accounts app connected f
 12. If a job asked for this (the app's Refresh numbers button), there may be an invoice with `request.kind: "check"`. Refresh that one first, then clear its `request` (set it to `null`).
 13. **Task list (only if attached).** Follow the hand-off in `apps/money/ATTACH-CLAUDE.md`. Don't add one that's already there.
 14. Save safely: read the file right before writing, write the whole file back, read it back and check it parses.
-15. **Connections.** If `apps/home/data/connections.json` has a row for the accounts app that is `connected` or `needs-attention`, the read in step 2 is its check. If it worked, set its `checked` to today, and if its status was `needs-attention`, set it back to `connected` (the read just worked). If the read failed, set it to `needs-attention` with what went wrong in `note`, keep the old `checked`, and say so in one line ("Couldn't read Xero this time: it may need signing in again. There's a Fix it button on Home."). Do this in a scheduled run too. If the file isn't there, or has no such row, there is nothing to do here.
+15. **Connections.** If `apps/home/data/connections.json` has a row for the accounts app that is `connected` or `needs-attention`, the read in step 2 is its check. If it worked, set its `checked` to today, and if its status was `needs-attention`, set it back to `connected` (the read just worked). If the read failed, set it to `needs-attention` with what went wrong in `note`, keep the old `checked`, and say so in one line ("Couldn't read Xero this time: it may need signing in again. There's a Fix it button on Home."). Do this in a scheduled run too. Leave `waiting` rows alone: they're finished when the person says it's sorted (`.claude/skills/connect-a-tool`, "Waiting on someone else"). If the file isn't there, or has no such row, there is nothing to do here.
 
 ## What to say back
 
-3 to 5 plain lines, with only what you read and not a single total of your own:
+Open with one line on progress towards their goal (`context/goal.md`), when this run found something that moves it: "Towards your goal of being paid within 30 days: Greenway Café paid INV-0042 on time." Skip that line when nothing moved it, and when `context/goal.md` isn't filled in. Never put a total or a forecast of your own in it.
+
+Then 3 to 5 plain lines, with only what you read and not a single total of your own:
 
 > I've brought your money view up to date from Xero, as at 21 October. I added 31 bank lines and 4 invoices, and matched Greenway Café's payment to INV-0042. I spotted 3 regular payments you might want to confirm: they're waiting in In and out. 1 payment from Marlow Dental didn't match an invoice, so I've flagged it for you.
 

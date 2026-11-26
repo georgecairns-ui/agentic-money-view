@@ -2,6 +2,8 @@
 
 Goal: the Overview shows real figures, they know what the 4 numbers at the top and the chart mean, and they know how to raise an invoice.
 
+If the accounts app is `waiting` (step 2, part 6), build what you can from what is connected and what they've told you in setup, and say plainly, in one line: "Your money view fills in once your accounts app is connected. When it is, press Finish connecting on Home, or tell me." Money View still never builds anything from an export. Leave out part 3 (raising an invoice needs the accounts app) and say it comes once that's connected.
+
 ## 1. Anything coming in that isn't invoiced yet?
 
 Ask once:
