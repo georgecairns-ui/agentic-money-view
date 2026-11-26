@@ -15,8 +15,9 @@ Check these yourself. Fix anything that fails, then check again.
 - [ ] The **Refresh numbers** button can ask Claude to run a job. It needs Claude Code installed on this computer; if it isn't, the app says to ask Claude instead, rather than failing quietly.
 - [ ] The app looks right in both light and dark (the moon or sun button at the top).
 - [ ] Nothing secret (a password, a key, a sort code, an account number or a card number) is anywhere in this folder, and nothing was sent, paid, moved or changed in their accounts or bank.
-- [ ] Their accounts app has a row in `apps/home/data/connections.json` that says `connected`, with a `checked` date from this setup. Do one small read now (their unpaid invoices) to check it still works. If it fails, follow `.claude/skills/connect-a-tool` until it reads again.
-- [ ] Home shows the Connections box with their accounts app as Connected.
+- [ ] Their accounts app has a row in `apps/home/data/connections.json` that says `connected`, with a `checked` date from this setup, or `waiting` with `waitingOn` and the one thing still to do in `note`. If it's `connected`, do one small read now (their unpaid invoices) to check it still works. If it fails, follow `.claude/skills/connect-a-tool` until it reads again.
+- [ ] Home shows the Connections box with their accounts app as Connected, or as Waiting with a **Finish connecting** button.
+- [ ] If the accounts app is `waiting`, the checks above that need its figures (the Overview's real figures, the invoices from their accounts software, the bank feed) wait for it too: say so in the hand-over rather than marking them done.
 - [ ] Anything else they connected is `connected`, `export-only`, `no-connector`, `waiting` or `needs-attention` in `apps/home/data/connections.json`. Anything `waiting` has `waitingOn` and the one thing still to do in `note`.
 - [ ] Every `context/` file says "Status: filled in", or `setup/progress.md` says why not. `context/goal.md` has their goal with the numbers.
 
@@ -81,7 +82,7 @@ Say those figures only as the app shows them. Then tell them, briefly:
 - **Their connection**, in one line: which accounts app you connected, and that its bank feed is read through it.
 - **The regular refresh**, if they chose it: the days and times it runs.
 - **Xero only**, in these words: "If you'd ever like me to put invoices into Xero as drafts for you, say 'put invoices in Xero'."
-- **Anything still waiting.** List every `waiting` connection with the one thing to do next: "Your CRM is waiting on your Claude Owner to add it. When they have, press Finish connecting on Home, or tell me, and I'll check it then."
+- **Anything still waiting.** List every `waiting` connection with the one thing to do next: "Xero is waiting on your Claude Owner to add it. When they have, press Finish connecting on Home, or tell me, and I'll fill in your money view then."
 - **Files you said you'd share.** List any still `to find` in `setup/progress.md`, by name.
 - **Joining up the rest.** If anything is `no-connector` or `export-only`, say once: "Want these joined up with something you already use? Book a call with Joey or George," with the booking link from `apps/shared/catalogue.json`. The Connections box on Home has the same link next to each one.
 

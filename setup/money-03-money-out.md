@@ -6,6 +6,8 @@ Goal: the money going out is confirmed, the person's VAT and tax details are sav
 
 Follow `.claude/skills/update-my-money-view`. It reads the connected accounts software and its bank feed, adds the bank lines and invoices, and suggests the regular payments it spotted. Tell them what's about to happen in one sentence: "I'm going to read what's in your accounts software and its bank feed, then show you the regular payments I think I've spotted." Read only: it moves nothing and sends nothing.
 
+If the accounts app is `waiting` (step 2, part 6), there's nothing to read yet: say so in one line, then ask about their regular payments in part 2's "Is there a regular payment I've missed?" and add what they tell you, as confirmed outgoings with `source: "you"`. Parts 3 to 5 work the same.
+
 ## 2. Confirm the regular payments
 
 Show the suggested payments (the `outgoings` with `status: "suggested"`), most expensive first: name, amount, how often, next date. Say where each came from ("From your Xero bank feed: Adobe, £54.99 on the 12th each month"). Ask:

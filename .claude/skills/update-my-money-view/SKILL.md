@@ -17,7 +17,7 @@ You bring the person's money view up to date from their accounts app, whenever t
 - `apps/home/data/connections.json`, if it's there: the accounts connection you proved in setup.
 - Optional, if attached (`apps/installed.json`): Agentic Task List (`task-list`). See `apps/money/ATTACH-CLAUDE.md`.
 
-If the accounts mode is `none`, say Money View needs an accounts app connected first and offer `/setup`. If the bank mode is `none`, say so and offer `setup/money-02-your-bank.md`. Don't invent anything.
+If the accounts mode is `none`, say Money View needs an accounts app connected first and offer `/setup`. If its row in `apps/home/data/connections.json` is `waiting`, say instead, in one line, that the money view fills in once it's connected: they press **Finish connecting** on Home, or tell you (`.claude/skills/connect-a-tool`, "Waiting on someone else"). Once that's done, this skill is what fills the money view in. If the bank mode is `none`, say so and offer `setup/money-02-your-bank.md`. Don't invent anything.
 
 ## Steps
 

@@ -61,7 +61,9 @@ If Xero or Intuit's QuickBooks connector is there but still won't connect after 
 
 ## 6. If it's waiting on someone else
 
-If the connector needs their Claude Owner to add it, or their IT administrator to approve it (on a Team or Enterprise plan, `setup/connections/where-to-click.md`), record the row as `waiting` with `waitingOn` (`.claude/skills/connect-a-tool`, "Waiting on someone else"), and offer to draft the short message they can send. Money View can't build anything without this connection, so this is the one wait that pauses setup: leave this step unticked, put "Accounts connection waiting on <who>" in `setup/progress.md`, tell them that once it's sorted they can press **Finish connecting** on Home or type /setup, and stop here.
+If the connector needs their Claude Owner to add it, or their IT administrator to approve it (on a Team or Enterprise plan, `setup/connections/where-to-click.md`), park it (`.claude/skills/connect-a-tool`, "Waiting on someone else"): offer to draft the short message they can send, record the row as `waiting` with `waitingOn` (who, such as "IT") and the one thing still to do in `note`, and add "Accounts connection waiting on <who>" to "Notes for next time" in `setup/progress.md`. Leave `sources.accounts.mode` as `none`. Say plainly, in one line: "Your money view fills in once your accounts app is connected. When it is, press Finish connecting on Home, or tell me." Ask about payment terms (part 7), tick this step with the note "accounts app waiting on <who>", and go on to step 3 (`setup/money-02-your-bank.md`).
+
+When it's finished later (Finish connecting, or they tell you), `connect-a-tool` part 2a proves it with a read and then does what setup would have done with it. For the accounts app that is: part 8 of this step (`sources.accounts`, the invoice prefix), the bank feed check in `setup/money-02-your-bank.md` (questions 2 and 3), then `.claude/skills/update-my-money-view` and confirming the regular payments it suggests (`setup/money-03-money-out.md`, parts 1 and 2), so the money view fills in.
 
 ## 7. Payment terms
 
